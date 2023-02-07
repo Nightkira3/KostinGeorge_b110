@@ -29,17 +29,19 @@ else:
 # TODO:
 
 numb = ""
-while numb == "Чётные" or "Нечётные":
+even_numb = 'Чётные'
+odd_numb = 'Нечётные'
+
+while numb == even_numb or odd_numb:
     numb = input('Чётные или нечётные?:')
-    if numb == "Чётные":
+    if numb == even_numb:
         for i in range(0, 21, 2):
             print(i)
-    elif numb == "Нечётные":
+    elif numb == odd_numb:
         for i in range(1, 20, 2):
             print(i)
     else:
         print('Я не понимаю, что вы от меня хотите')
-        break
 
 # Задача-3: Дано произвольное целое число, вывести самую большую цифру этого числа.
 # Например, дается x = 58375.
