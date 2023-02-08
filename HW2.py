@@ -31,8 +31,9 @@ else:
 numb = ""
 even_numb = 'Чётные'
 odd_numb = 'Нечётные'
+run_cycle = True
 
-while numb == even_numb or odd_numb:
+while run_cycle:
     numb = input('Чётные или нечётные?:')
     if numb == even_numb:
         for i in range(0, 21, 2):
@@ -41,6 +42,7 @@ while numb == even_numb or odd_numb:
         for i in range(1, 20, 2):
             print(i)
     else:
+        run_cycle = False
         print('Я не понимаю, что вы от меня хотите')
 
 # Задача-3: Дано произвольное целое число, вывести самую большую цифру этого числа.
