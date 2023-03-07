@@ -78,12 +78,12 @@ def main():
             if dir_name:
                 try:
                     os.chdir(dir_name)
-                    print(f'Переход в {dir_name} успешен', os.getcwd())   # Переходит только в последующие папки, а назад уже не может :C
+                    print(f'Переход в {dir_name} успешен', os.getcwd())
                 except FileNotFoundError:
                     print('Переход невозможен!')
 
         elif task == '2':
-            print(os.getcwd(), list_dir())
+            list_dir()
 
         elif task == '3':
             dir_name = input('Введите имя папки для удаления: ')

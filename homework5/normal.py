@@ -1,4 +1,5 @@
-# Задание-1:
+import re
+
 # Вывести символы в нижнем регистре, которые находятся вокруг
 # 1 или более символов в верхнем регистре.
 # Т.е. из строки "mtMmEZUOmcq" нужно получить ['mt', 'm', 'mcq']
@@ -20,6 +21,19 @@ line = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysmNO'\
        'XiUWgsKQrDOeZoNlZNRvHnLgCmysUeKnVJXPFIzvdDyleXylnKBfLCjLHntltignbQoiQ'\
        'zTYwZAiRwycdlHfyHNGmkNqSwXUrxGc'
 
+result = re.findall(r"[a-z]+", line)
+print(result)
+
+my_results = []
+word = ""
+for i in line:
+    if i in "abcdefghijklmnopqrstuvwxyz":
+        word += i
+    else:
+        if len(word) > 0:
+            my_results.append(word)
+        word = ""
+print(my_results)
 
 # Задание-2:
 # Вывести символы в верхнем регистре, слева от которых находятся
@@ -44,6 +58,35 @@ line_2 = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysm'\
        'uXBqHFjvihuNGEEFsfnMXTfptvIOlhKhyYwxLnqOsBdGvnuyEZIheApQGOXWeXoLWiDQN'\
        'JFaXiUWgsKQrDOeZoNlZNRvHnLgCmysUeKnVJXPFIzvdDyleXylnKBfLCjLHntltignbQ'\
        'oiQzTYwZAiRwycdlHfyHNGmkNqSwXUrxGC'
+
+result = re.findall(r"(?<=[a-z]{2})[A-Z]+(?=[A-Z]{2})", line_2)
+print(result)
+
+my_results = []
+small_letters = "abcdefghijklmnopqrstuvwxyz"
+big_letters = "abcdefghijklmnopqrstuvwxyz".upper()
+
+word = ""
+for i in line_2:
+    if i in small_letters:
+        if len(word) < 2:
+            word += i
+        elif len(word) == 2:
+            word = word[1] + i
+        else:
+            if len(word) > 4:
+                if word[0] in small_letters and word[1] in small_letters and word[-1] in big_letters and word[-2] in big_letters:
+                    res_word = word[2:-2]
+                    my_results.append(res_word)
+            word = i
+
+    else:
+        if len(word) >= 2:
+            word += i
+        else:
+            word = ""
+
+print(my_results)
 
 # Задание-3:
 # Напишите скрипт, заполняющий указанный файл (самостоятельно задайте имя файла)

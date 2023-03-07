@@ -7,35 +7,36 @@ __author__ = 'Костин Георгий'
 # Исходная программа:
 # TODO:
 
-
-def avg(a, b):
-    """Вернуть среднее геометрическое чисел 'a' и 'b'.
-
-    Параметры:
-        - a, b (int или float).
-
-    Результат:
-        - float.
-    """
-    if a * b >= 0:
-        return (a * b) ** 0.5
-    else:
-        raise ValueError("Невозможно определить среднее геометрическое "
-                         "введенных чисел.")
-
-
-try:
-    a = float(input("a = "))
-    b = float(input("b = "))
-    c = avg(a, b)
-    print(f"Среднее геометрическое = {c}")
-except ValueError as err:
-    print("Ошибка:", err, ". Проверьте введенные числа.")
-except Exception as err:
-    print("Ошибка:", err)
-
 if __name__ == '__main__':
-    avg()
+    def avg(a, b):
+        """Вернуть среднее геометрическое чисел 'a' и 'b'.
+
+        Параметры:
+            - a, b (int или float).
+
+        Результат:
+            - float.
+        """
+        if a * b >= 0:
+            return (a * b) ** 0.5
+        else:
+            raise ValueError("Невозможно определить среднее геометрическое "
+                             "введенных чисел.")
+
+
+    try:
+        a = float(input("a = "))
+        b = float(input("b = "))
+        c = avg(a, b)
+        print(f"Среднее геометрическое = {c}")
+    except ValueError as err:
+        print("Ошибка:", err, ". Проверьте введенные числа.")
+    except Exception as err:
+        print("Ошибка:", err)
+
+    if __name__ == '__main__':
+        avg()
+
 
 # ПРИМЕЧАНИЕ: Для решения задач 2-4 необходимо познакомиться с модулями os, sys!
 # СМ.: https://pythonworld.ru/moduli/modul-os.html, https://pythonworld.ru/moduli/modul-sys.html
@@ -98,11 +99,9 @@ if __name__ == '__main__':
 
 
 def list_dir():
-    buffer = os.listdir()
-    print('Список файлов:')
-    for index, element in enumerate(buffer, start=1):
-        if os.path.isdir(element):
-            print(f'{index}. {element}')
+    for item in os.listdir(os.getcwd()):
+        print(item)
+
 
 if __name__ == '__main__':
     list_dir()
