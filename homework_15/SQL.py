@@ -14,7 +14,7 @@ with sqlite3.connect('db.sqlite3') as con:
     cur.execute('''
     CREATE TABLE IF NOT EXISTS competition (
         id INTEGER PRIMARY KEY,
-        name TEXT,
+        name TEXT(30) UNIQUE,
         date INTEGER NOT NULL,
         location TEXT 
     );
